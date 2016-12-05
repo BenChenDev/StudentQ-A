@@ -28,7 +28,7 @@
 
 <body>
     <!-- for sending commands -->
-    <div style='display:none'>  <!-- should not be displayed -->
+    <div style='display:none'> 
         <!-- form for SignOut -->
         <form id='form-signout' method='post' action='bootstrap_controller.php'>
             <input type='hidden' name='page' value='MainPage'>
@@ -64,14 +64,14 @@
         
         <div class='row'> 
             <!-- main content -->
-            <div id='result-pane' class='col-md-12'>  <!-- innerHTML will be filled from view_mainpage_*.php -->
+            <div id='result-pane' class='col-md-12'>  
             </div>
         </div>
     </div>
 
 
-    <!-- Modal for SearchQuestions --> <!-- You can check view_startpage.php for hints for ??? -->
-    <div id="modal-search-questions" class="modal fade">  <!-- modal -->
+    <!-- Modal for SearchQuestions --> 
+    <div id="modal-search-questions" class="modal fade"> 
     
         <div class="modal-dialog">
         
@@ -284,7 +284,7 @@
 	</script>
 	
 	<script>
-       function construct_table(data)  // data: '{"caption":[{...}, ...]}'
+       function construct_table(data) 
         {
             // Convert the JSON string to an object
             var obj = JSON.parse(data);  
@@ -320,6 +320,8 @@
         }
 
         // when the search question button is clicked
+		
+		//clear the content of the text area
 		$('#modal-search-questions').on('hidden.bs.modal', function () {
 			$(this).find('form').trigger('reset');
 		});
@@ -393,7 +395,7 @@
 			});
 		});
 		
-		function construct_list_table(data)  // data: '{"caption":[{...}, ...]}'
+		function construct_list_table(data)  
         {
             // Convert the JSON string to an object
             var obj = JSON.parse(data);  
@@ -443,7 +445,7 @@
 			});
 		});
 		
-		function construct_list_answers_table(data)  // data: '{"caption":[{...}, ...]}'
+		function construct_list_answers_table(data)  
         {
             // Convert the JSON string to an object
             var obj = JSON.parse(data);  
