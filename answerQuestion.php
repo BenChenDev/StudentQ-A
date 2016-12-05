@@ -13,5 +13,5 @@ $questionId = $row2['QuestionId'];
 $sql3 = "INSERT INTO Answers (QuestionId, UserId, Answer, Date)VALUES('$questionId','$userId','$answer',current_date)";
 mysqli_query($conn,$sql3);
 
-
+//Im dyson
 ?>
