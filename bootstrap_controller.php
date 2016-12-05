@@ -5,7 +5,7 @@
 */
 
 if (empty($_POST['page'])) {
-    $display_type = 'no-signin';
+    
     include ('bootstrap_view_startpage.php');  // StartPage
     exit;
 }
@@ -17,10 +17,7 @@ if (empty($_POST['page'])) {
 
 require ('module.php');  // connect to MySQL database
 require ('module_users.php');  // functions to use Users table
-/**
-require ('module_questions.php');  // functions to use Questions table
-require ('module_answers.php');  // functions to use Answers table
-**/
+
 
 session_start();
 
@@ -36,7 +33,7 @@ if ($page == 'StartPage')
 			
 	if (!empty($_POST['username1']) && !empty($_POST['password1'])){
         if(check_vali($username1,$password1)){
-			$display_type = 'signin';
+			
 					
 			$username = $_POST['username1'];
 			$password = $_POST['password1'];
@@ -56,7 +53,7 @@ if ($page == 'StartPage')
 	}
 	else
 	{
-		$display_type = 'no-SignIn';
+		
 		include('bootstrap_view_startpage.php');
 	}
     break;
@@ -116,19 +113,16 @@ if ($page == 'StartPage')
 				if(check_vali($username3,$password3))
 				{
 					delete_row($username3,$password3);
-					$display_type = 'Unsubscribe';  // If anyone of them is missing, then redisplay the StartPage with the 'SignIn' form having error messages.
 					include('bootstrap_view_startpage.php');
 				}
 				else
 				{
 					echo '*Wrong password or wrong username.';
-					$display_type = 'Unsubscribe';  // If anyone of them is missing, then redisplay the StartPage with the 'SignIn' form having error messages.
 					include('bootstrap_view_startpage.php');
 				}
 			}
 			else
 			{
-				$display_type = 'unsubscribe';
 				include('bootstrap_view_startpage.php');
 			}		
     }
@@ -137,7 +131,6 @@ if ($page == 'StartPage')
 else if ($page == 'MainPage') 
 {
     if (!isset($_SESSION['signedin'])) {
-        $display_type = 'no-signin';
         include ('bootstrap_view_startpage.php');  // StartPage
         exit;
     }
@@ -149,7 +142,6 @@ else if ($page == 'MainPage')
     case 'SignOut':  // 'SignOut' menu item, or timeout
         session_unset();
         session_destroy();  // It does not unset session variables. session_unset() is needed.
-        $display_type = 'no-signin';
         include ('bootstrap_view_startpage.php');  // StartPage
         break;
     case 'SearchQuestions':
